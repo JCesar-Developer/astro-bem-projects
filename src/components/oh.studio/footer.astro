@@ -1,0 +1,47 @@
+---
+import LogoA from '../../../public/oh.studio/logo_form_a.astro';
+---
+
+<footer class="footer">
+  <p class="footer__rights">
+    <LogoA />
+    © Oli Harris 2023
+  </p>
+  <div class="footer__nav">
+    <a class="footer__link" href="#">Twitter</a>
+    <a class="footer__link" href="#">LinkedIn</a>
+    <a class="footer__link" href="#">Mail</a>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 1400px;
+    width: 100%;
+    padding: 0px 40px 40px 40px;
+    font-size: 14px;
+    font-weight: 400;
+
+    .footer__rights {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer__nav {
+      display: flex;
+      flex-direction: row;
+      gap: 15px;
+    }
+
+    .logo__a {
+      width: 30px;
+      height: 30px;
+    }
+  }
+</style>

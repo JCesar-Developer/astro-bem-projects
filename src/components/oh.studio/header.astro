@@ -1,0 +1,57 @@
+---
+const rootUrl = import.meta.env.OH_STUDIO;
+---
+
+<header>
+  <nav class="nav">
+    <a href={ rootUrl }>
+      <button class="nav__item nav__item--active">
+        Home
+      </button>
+    </a>
+    <a href={`${ rootUrl }/profile`}>
+      <button class="nav__item">
+        Profile
+      </button>
+    </a>
+    <a href={`${ rootUrl }/contact`}>
+      <button class="nav__item">
+        Contact
+      </button>
+    </a>
+  </nav>
+</header>
+
+<style>
+  header {
+    position: sticky;
+    top: 0px;
+    display: flex;
+    justify-content: center;
+    padding-top: 2rem;
+    z-index: 10;
+
+    .nav {
+      background: var(--oh-secondary);
+      border-radius: 34px;
+      display: flex;
+      gap: 1rem;
+      padding: .3rem;
+
+      .nav__item {
+        border-radius: 30px;
+        border: none;
+        cursor: pointer;
+        font-size: 14px;
+        padding: .7rem 1.4rem;
+        text-align: center;
+        width: 6rem;
+        background-color: transparent;
+      }
+
+      .nav__item--active {
+        background: var(--oh-white);
+      }
+    }
+  }
+</style>

@@ -1,0 +1,68 @@
+---
+import Header from '../components/oh.studio/header.astro';
+import Footer from '../components/oh.studio/footer.astro';
+import ActionBtn from '../components/oh.studio/action_btn.astro';
+const rootUrl = import.meta.env.OH_STUDIO;
+
+interface Props { title: string; }
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="light">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Oh studio landscape developed with Astro + BEMCss" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+
+	<body>
+    <Header/>
+    <main>
+      <slot />
+    </main>
+
+    <ActionBtn 
+      content="Contact us"
+      link={ `${ rootUrl }/contact` }
+      hasLogo 
+    />
+    <Footer/>
+	</body>
+
+</html>
+
+<style is:global>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--oh-black);
+  }
+
+  :root {
+    --oh-primary: #7f7f7f;
+    --oh-secondary: #e8e5e480;
+    --oh-white: #fff;
+    --oh-black: #000;
+  }
+  
+</style>
