@@ -2,5 +2,30 @@
 import OhStudio from '../../layouts/oh.studio.astro';
 ---
 <OhStudio title='contact'>
-  <h1>Contact works!</h1>
+  
+  <section class="hero">
+    <h1 class="hero__title">Let's work together.</h1>
+    <h1 class="hero__subtitle">
+      Get in touch.
+    </h1>
+  </section>
+
 </OhStudio>
+
+<style>
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .hero__subtitle {
+      color: var(--oh-primary);
+      cursor: pointer;
+      transition: color .1s ease-in-out;
+
+      &:hover {
+        color: var(--oh-secondary);
+      }
+    }
+  }
+</style>

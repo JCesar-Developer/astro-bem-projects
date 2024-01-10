@@ -1,0 +1,46 @@
+---
+import Tag from "./tag.astro"
+
+interface Props {
+  period: string;
+  enterprise: string;
+  position: string;
+  contract: string;
+}
+
+const { period, enterprise, position, contract } = Astro.props;
+
+---
+
+<article class="card-experience">
+  <h4 class="card-experience__period">{ period }</h4>
+  <h3 class="card-experience__enterprise">{ enterprise }</h3>
+  <p class="card-experience__position">{ position }</p>
+  <Tag class="card-experience__contract" text={ contract } />
+</article>
+
+<style>
+  .card-experience {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .card-experience__period {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--oh-primary);
+    }
+
+    .card-experience__enterprise {
+      font-size: 18px;
+      font-weight: 500;
+      margin: .8rem 0;
+    }
+
+    .card-experience__position {
+      font-size: 14px;
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+    }
+  }
+</style>

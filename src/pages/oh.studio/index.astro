@@ -1,30 +1,33 @@
 ---
 import OhStudio from '../../layouts/oh.studio.astro';
 import Card from '../../components/oh.studio/card.astro';
+import Tag from '../../components/oh.studio/tag.astro';
+
+import Cards from '../../data/oh.studio/card.data';
+
 const rootUrl = import.meta.env.OH_STUDIO;
 ---
 
 <OhStudio title='oh.studio'>
-  <div class="hero">
-    <h1 class="hero__title">A brand and product designer working with clients globally</h1>
+  <section class="hero">
+    <h1 class="hero__title">
+      A brand and product designer working with clients globally
+    </h1>
 
     <div class="hero__tags">
-      <span class="hero__tag">Expertise</span>
-      <span class="hero__tag">Branding</span>
-      <span class="hero__tag">Product</span>
-      <span class="hero__tag">Design Systems</span>
+      <Tag text="Expertise" />
+      <Tag text="Branding" />
+      <Tag text="Product" />
+      <Tag text="Design Systems" />
     </div>
-  </div>
+  </section>
 
   <section class="galery">
-    <Card cardName="Aire" cardImage="/oh.studio/aire.jpg" cardDescription="This is an image for the main galery" />
-    <Card cardName="Correlated" cardImage="/oh.studio/correlated.jpg" cardDescription="This is an image for the main galery" />
-    <Card cardName="Channel 5" cardImage="/oh.studio/channel_5.jpg" cardDescription="This is an image for the main galery" />
-    <Card cardName="Ronald Abram" cardImage="/oh.studio/ronald_abram.jpg" cardDescription="This is an image for the main galery" />
-    <Card cardName="Schuh" cardImage="/oh.studio/schuh.jpg" cardDescription="This is an image for the main galery" />
-    <Card cardName="Paper street" cardImage="/oh.studio/paperstreet.jpg" cardDescription="This is an image for the main galery" />
-    <Card cardName="Monokel Eyewaer" cardImage="/oh.studio/monokel_eyewear.jpg" cardDescription="This is an image for the main galery" />
-    <Card cardName="Lawtrades" cardImage="/oh.studio/lawtrades.jpg" cardDescription="This is an image for the main galery" />
+    {
+      Cards.map(card => (
+        <Card cardName={ card.name } cardImage={ card.image } cardDescription={ card.description } />
+      ))
+    }
   </section>
 
   <section class="prefooter">
@@ -46,8 +49,6 @@ const rootUrl = import.meta.env.OH_STUDIO;
     padding: 8rem 0;
     
     .hero__title {
-      font-size: 4rem;
-      font-weight: 500;
       text-align: center;
       max-width: 700px;
     }
@@ -57,12 +58,6 @@ const rootUrl = import.meta.env.OH_STUDIO;
       display: flex;
       flex-direction: row;
       gap: .5rem;
-
-      .hero__tag {
-        background: var(--oh-secondary);
-        padding: .25rem .5rem;
-        border-radius: 25px;
-      }
     }
   }
 
@@ -70,9 +65,7 @@ const rootUrl = import.meta.env.OH_STUDIO;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem 1.5rem;
-    max-width: 1400px;
     width: 100%;
-    padding: 0 40px;
 
     .galery__item {
       width: 100%;
@@ -83,13 +76,12 @@ const rootUrl = import.meta.env.OH_STUDIO;
   }
 
   .prefooter {
-    padding: 4rem 40px;
+    padding: 6rem 40px;
     text-align: center;
 
     .prefooter__title {
       font-size: 2.5rem;
-      font-weight: 500;
-      margin-bottom: 1rem;
+      font-weight: 400;
     }
 
     .prefooter__actionbtn {

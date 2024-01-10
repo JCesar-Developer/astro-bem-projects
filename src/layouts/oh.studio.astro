@@ -36,6 +36,7 @@ const { title } = Astro.props;
 
 <style is:global>
   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+  @import '../styles/oh-utilities.css';
 
   * {
     margin: 0;
@@ -47,15 +48,6 @@ const { title } = Astro.props;
   body {
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-  }
-
-  a {
-    text-decoration: none;
-    color: var(--oh-black);
   }
 
   :root {
@@ -64,5 +56,26 @@ const { title } = Astro.props;
     --oh-white: #fff;
     --oh-black: #000;
   }
-  
+
+  a {
+    text-decoration: none;
+    color: var(--oh-black);
+  }
+</style>
+
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    min-height: 100vh;
+
+  }
+
+  main {
+    max-width: 1400px;
+    padding: 0 40px;
+  }
 </style>

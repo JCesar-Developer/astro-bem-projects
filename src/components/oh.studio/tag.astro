@@ -1,0 +1,14 @@
+---
+const { text } = Astro.props;
+---
+
+<span class="tag">{ text }</span>
+
+<style>
+  .tag {
+    background: var(--oh-secondary);
+    padding: .5rem 1rem;
+    border-radius: 25px;
+    font-size: 14px;
+  }
+</style>
