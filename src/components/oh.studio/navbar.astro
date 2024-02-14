@@ -1,0 +1,54 @@
+---
+interface Props {
+  items: Item[];
+  currentUrl: string;
+}
+interface Item {
+  name: string;
+  link: string;
+}
+
+const { items, currentUrl } = Astro.props;
+---
+
+<nav class="nav">
+  {
+    items.map( item => 
+      <a href={ item.link }>
+        <button class:list={[
+          'nav__item', {
+            'nav__item--active' : ( currentUrl === item.link )
+          }
+        ]}>
+          { item.name }
+        </button>
+      </a>
+    )
+  }
+</nav>
+
+<style>
+  .nav {
+    background: var(--oh-secondary);
+    backdrop-filter: blur(10px);
+    border-radius: 34px;
+    display: flex;
+    gap: 1rem;
+    padding: .3rem;
+
+    .nav__item {
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      padding: .7rem 1.4rem;
+      text-align: center;
+      width: 6rem;
+      background-color: transparent;
+    }
+
+    .nav__item--active {
+      background: var(--oh-white);
+    }
+  }
+</style>

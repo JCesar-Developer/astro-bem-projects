@@ -47,10 +47,13 @@ const rootUrl = import.meta.env.OH_STUDIO;
     flex-direction: column;
     justify-content: center;
     padding: 8rem 0;
-    
+
     .hero__title {
       text-align: center;
       max-width: 700px;
+
+      animation-name: show-up;
+      animation-duration: 1s;
     }
 
     .hero__tags {
@@ -58,6 +61,11 @@ const rootUrl = import.meta.env.OH_STUDIO;
       display: flex;
       flex-direction: row;
       gap: .5rem;
+
+      animation-name: show-up;
+      animation-duration: 1s;
+      animation-delay: .3s;
+      animation-fill-mode: both;
     }
   }
 
@@ -66,6 +74,11 @@ const rootUrl = import.meta.env.OH_STUDIO;
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem 1.5rem;
     width: 100%;
+
+    animation-name: show-up;
+    animation-duration: 1s;
+    animation-delay: .6s;
+    animation-fill-mode: both;
 
     .galery__item {
       width: 100%;
@@ -76,12 +89,17 @@ const rootUrl = import.meta.env.OH_STUDIO;
   }
 
   .prefooter {
-    padding: 6rem 40px;
+    padding: 8rem 40px;
     text-align: center;
 
     .prefooter__title {
       font-size: 2.5rem;
       font-weight: 400;
+
+      animation-name: show-up;
+      animation-fill-mode: both;
+      animation-timeline: view();
+      animation-range: 150px 250px;
     }
 
     .prefooter__actionbtn {

@@ -1,11 +1,15 @@
 ---
-import Header from '../components/oh.studio/header.astro';
+import { ViewTransitions } from 'astro:transitions';
+
+import NavBar from '../components/oh.studio/navbar.astro';
 import Footer from '../components/oh.studio/footer.astro';
 import ActionBtn from '../components/oh.studio/action_btn.astro';
-const rootUrl = import.meta.env.OH_STUDIO;
 
 interface Props { title: string; }
+
 const { title } = Astro.props;
+const rootUrl = import.meta.env.OH_STUDIO;
+const currentPath = Astro.url.pathname;
 ---
 
 <!doctype html>
@@ -16,10 +20,20 @@ const { title } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+    <ViewTransitions />
 	</head>
 
 	<body>
-    <Header/>
+    <header>
+      <NavBar 
+        items={ [
+          { name: 'Home', link: `${ rootUrl }` },
+          { name: 'Profile', link: `${ rootUrl }/profile` },
+          { name: 'Contact', link: `${ rootUrl }/contact` },
+        ]}
+        currentUrl={ currentPath }
+      />
+    </header>
     <main>
       <slot />
     </main>
@@ -71,7 +85,16 @@ const { title } = Astro.props;
     justify-content: space-between;
     position: relative;
     min-height: 100vh;
+    overflow-y: scroll;
+  }
 
+  header {
+    position: sticky;
+    top: 0px;
+    display: flex;
+    justify-content: center;
+    padding-top: 2rem;
+    z-index: 10;
   }
 
   main {

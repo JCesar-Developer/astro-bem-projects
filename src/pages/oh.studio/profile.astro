@@ -11,7 +11,7 @@ const rootUrl = import.meta.env.OH_STUDIO;
 
 <OhStudio title='profile'>
   <section class="hero">
-    <h1>Hey 👋🏼 I'm Oli </h1>
+    <h1 class="hero__title">Hey 👋🏼 I'm Oli </h1>
   </section>
 
   <section class="pictures">
@@ -75,6 +75,11 @@ const rootUrl = import.meta.env.OH_STUDIO;
     justify-content: center;
     align-items: center;
     height: 80vh;
+
+    .hero__title {
+      animation-name: show-up;
+      animation-duration: 1s;
+    }
   }
 
   .pictures {
@@ -88,6 +93,11 @@ const rootUrl = import.meta.env.OH_STUDIO;
       aspect-ratio: 1/.75;
       object-fit: cover;
       border-radius: 15px;
+
+      animation-name: show-up;
+      animation-duration: 1s;
+      animation-delay: .3s;
+      animation-fill-mode: both;
     }
   }
 
@@ -100,9 +110,21 @@ const rootUrl = import.meta.env.OH_STUDIO;
     text-align: center;
     height: 90vh;
 
+    .tag {
+      animation-name: show-up;
+      animation-fill-mode: backwards;
+      animation-timeline: view();
+      animation-range: 20% 60%;
+    }
+
     .about__description {
       margin-top: 1rem;
       max-width: 600px;
+
+      animation-name: show-up;
+      animation-fill-mode: backwards;
+      animation-timeline: view();
+      animation-range: 25% 60%;
     }
   }
 
@@ -112,8 +134,19 @@ const rootUrl = import.meta.env.OH_STUDIO;
     flex-direction: column;
     align-items: center;
 
+    >.tag {
+      animation-name: show-up;
+      animation-fill-mode: backwards;
+      animation-timeline: view();
+      animation-range: 30% 60%;
+    }
+
     .experience__description {
       margin-top: 1rem;
+      animation-name: show-up;
+      animation-fill-mode: backwards;
+      animation-timeline: view();
+      animation-range: 35% 60%;
     }
 
     .experience__grid {
@@ -123,6 +156,10 @@ const rootUrl = import.meta.env.OH_STUDIO;
       row-gap: 5rem;
       align-items: center;
       margin: 7rem 0;
+      animation-name: show-up;
+      animation-fill-mode: backwards;
+      animation-timeline: view();
+      animation-range: 10% 30%;
     }
   }
 
@@ -132,8 +169,19 @@ const rootUrl = import.meta.env.OH_STUDIO;
     flex-direction: column;
     align-items: center;
 
+    >.tag {
+      animation-name: show-up;
+      animation-fill-mode: backwards;
+      animation-timeline: view();
+      animation-range: 30% 60%;
+    }
+
     .clients__description {
       margin-top: 1rem;
+      animation-name: show-up;
+      animation-fill-mode: backwards;
+      animation-timeline: view();
+      animation-range: 35% 60%;
     }
 
     .clients__grid {
@@ -141,6 +189,10 @@ const rootUrl = import.meta.env.OH_STUDIO;
       grid-template-columns: repeat(4, 1fr);
       width: 100%;
       margin: 7rem 0;
+      animation-name: show-up;
+      animation-fill-mode: backwards;
+      animation-timeline: view();
+      animation-range: 10% 30%;
 
       .clients__client {
         width: 100%;
@@ -158,6 +210,11 @@ const rootUrl = import.meta.env.OH_STUDIO;
     .prefooter__title {
       font-size: 2.5rem;
       font-weight: 400;
+
+      animation-name: show-up;
+      animation-fill-mode: both;
+      animation-timeline: view();
+      animation-range: 150px 250px;
     }
 
     .prefooter__actionbtn {

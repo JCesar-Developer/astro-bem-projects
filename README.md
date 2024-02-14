@@ -1,4 +1,4 @@
-# LANDPAGES PRACTICE (HTML + BEM CSS + ASTRO)
+# ASTRO - BEM CSS
 
 Coleccion de Landpages desarrolladas bajo la metodología de BEM Css. 
 
