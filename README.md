@@ -16,3 +16,8 @@ Coleccion de Landpages desarrolladas bajo la metodología de BEM Css.
 La mayoría de las landpages están extraidas de webs de terceros, todas las cuales pertenecen en derecho legal, a sus dueños. En cada uno de los clones, se agregará un README.md con la documentación correspondiente: 
   - Los autores originales.
   - Enlace a las webs de autoria.
+
+# OH STUDIO
+
+- WEBSITE: https://oh.studio/
+- AUTHOR: Oli Harris 2023

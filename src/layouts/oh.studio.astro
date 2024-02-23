@@ -1,9 +1,8 @@
 ---
+import NavBar from '@oh.studio/components/navbar.astro';
+import Footer from '@oh.studio/components/footer.astro';
+import ActionBtn from '@oh.studio/components/action_btn.astro';
 import { ViewTransitions } from 'astro:transitions';
-
-import NavBar from '../components/oh.studio/navbar.astro';
-import Footer from '../components/oh.studio/footer.astro';
-import ActionBtn from '../components/oh.studio/action_btn.astro';
 
 interface Props { title: string; }
 
@@ -16,10 +15,14 @@ const currentPath = Astro.url.pathname;
 <html lang="en" class="light">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Oh studio landscape developed with Astro + BEMCss" />
+		<meta name="description" content="Oh studio landscape developed with Astro + BEM-Css" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+
+    <link rel="preload" href="/oh.studio/fonts/Roboto-Light.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/oh.studio/fonts/Roboto-Regular.woff2" as="font" type="font/woff2" crossorigin />
+
     <ViewTransitions />
 	</head>
 
@@ -34,6 +37,7 @@ const currentPath = Astro.url.pathname;
         currentUrl={ currentPath }
       />
     </header>
+
     <main>
       <slot />
     </main>
@@ -49,8 +53,28 @@ const currentPath = Astro.url.pathname;
 </html>
 
 <style is:global>
-  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
-  @import '../styles/oh-utilities.css';
+  @font-face {
+    font-family: 'Roboto';
+    src: url('/oh.studio/fonts/Roboto-Light.woff2') format('woff2');
+    font-weight: 300;
+  }
+  @font-face {
+    font-family: 'Roboto';
+    src: url('/oh.studio/fonts/Roboto-Regular.woff2') format('woff2');
+    font-weight: 400;
+  }
+  @font-face {
+    font-family: 'Roboto';
+    src: url('/oh.studio/fonts/Roboto-Medium.woff2') format('woff2');
+    font-weight: 500;
+  }
+
+  :root {
+    --oh-primary: #7f7f7f;
+    --oh-secondary: #e8e5e480;
+    --oh-white: #fff;
+    --oh-black: #000;
+  }
 
   * {
     margin: 0;
@@ -64,16 +88,30 @@ const currentPath = Astro.url.pathname;
     padding: 0;
   }
 
-  :root {
-    --oh-primary: #7f7f7f;
-    --oh-secondary: #e8e5e480;
-    --oh-white: #fff;
-    --oh-black: #000;
-  }
-
   a {
     text-decoration: none;
     color: var(--oh-black);
+  }
+
+  h1 {
+    font-size: 4rem;
+    font-weight: 500;
+  }
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 400;
+  }
+
+  @keyframes show-up {
+    from {
+      translate: 0 100px;
+      opacity: 0;
+    }
+    to {
+      translate: 0 0;
+      opacity: 1;
+    }
   }
 </style>
 
