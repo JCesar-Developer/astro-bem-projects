@@ -8,8 +8,11 @@ interface Item {
   link: string;
 }
 
-const { items, currentUrl } = Astro.props;
-console.log(items, { currentUrl });
+const { items } = Astro.props;
+let { currentUrl } = Astro.props;
+if (currentUrl.endsWith('/')) {
+  currentUrl = currentUrl.slice(0, -1);
+}
 ---
 
 <nav class="nav">
@@ -18,7 +21,7 @@ console.log(items, { currentUrl });
       <a href={ item.link }>
         <button class:list={[
           'nav__item', {
-            'nav__item--active' : ( currentUrl === item.link )
+            'nav__item--active' : ( currentUrl === `${item.link}` )
           }
         ]}>
           { item.name }
@@ -30,7 +33,7 @@ console.log(items, { currentUrl });
 
 <style>
   .nav {
-    background: var(--oh-secondary);
+    background: var(--oh-secondary-blur);
     backdrop-filter: blur(10px);
     border-radius: 34px;
     display: flex;

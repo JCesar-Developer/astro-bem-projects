@@ -2,11 +2,16 @@
 import OhStudio from '@/layouts/oh.studio.astro';
 import Card from '@oh.studio/components/card.astro';
 import Tag from '@oh.studio/components/tag.astro';
+import Prefooter from '@oh.studio/components/prefooter.astro';
 
-import Cards from '@oh.studio/data/card.data';
-
-const rootUrl = import.meta.env.OH_STUDIO;
+import { Cards } from '@oh.studio/data/card.data';
 ---
+<link rel="preload" href="/oh.studio/aire.jpg" as="image">
+<link rel="preload" href="/oh.studio/correlated.jpg" as="image">
+<script>
+import reveal from '@oh.studio/helpers/useSetActive';
+window.addEventListener('scroll', reveal);
+</script>
 
 <OhStudio title='oh.studio'>
   <section class="hero">
@@ -24,20 +29,13 @@ const rootUrl = import.meta.env.OH_STUDIO;
 
   <section class="galery">
     {
-      Cards.map(card => (
-        <Card cardName={ card.name } cardImage={ card.image } cardDescription={ card.description } />
+      Cards.map( card => (
+        <Card card={ card } />
       ))
     }
   </section>
 
-  <section class="prefooter">
-    <h2 class="prefooter__title">Let's work together.</h2>
-    <h2 class="prefooter__title">
-      <a class="prefooter__actionbtn" href={ `${ rootUrl }/contact` }>
-        Get in touch.
-      </a>
-    </h2>
-  </section>
+  <Prefooter />
 </OhStudio>
 
 <style>
@@ -48,23 +46,28 @@ const rootUrl = import.meta.env.OH_STUDIO;
     justify-content: center;
     padding: 8rem 0;
 
+    @media (max-width: 768px) {
+      padding-block: 6rem;
+    }
+
     .hero__title {
       text-align: center;
       max-width: 700px;
-
-      animation-name: show-up;
+      animation-name: fade-up;
       animation-duration: 1s;
     }
 
     .hero__tags {
       margin-top: 3rem;
       display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       flex-direction: row;
       gap: .5rem;
 
-      animation-name: show-up;
+      animation-name: fade-up;
       animation-duration: 1s;
-      animation-delay: .3s;
+      animation-delay: .1s;
       animation-fill-mode: both;
     }
   }
@@ -74,11 +77,14 @@ const rootUrl = import.meta.env.OH_STUDIO;
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem 1.5rem;
     width: 100%;
-
-    animation-name: show-up;
+    animation-name: fade-up;
     animation-duration: 1s;
-    animation-delay: .6s;
+    animation-delay: .3s;
     animation-fill-mode: both;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
 
     .galery__item {
       width: 100%;
@@ -88,28 +94,5 @@ const rootUrl = import.meta.env.OH_STUDIO;
     }
   }
 
-  .prefooter {
-    padding: 8rem 40px;
-    text-align: center;
 
-    .prefooter__title {
-      font-size: 2.5rem;
-      font-weight: 400;
-
-      animation-name: show-up;
-      animation-fill-mode: both;
-      animation-timeline: view();
-      animation-range: 150px 250px;
-    }
-
-    .prefooter__actionbtn {
-      color: var(--oh-primary);
-      cursor: pointer;
-      transition: color .1s ease-in-out;
-
-      &:hover {
-        color: var(--oh-secondary);
-      }
-    }
-  }
 </style>

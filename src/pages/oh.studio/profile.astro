@@ -1,13 +1,25 @@
 ---
 import OhStudio from '@/layouts/oh.studio.astro';
+
+//components
 import Tag from '@oh.studio/components/tag.astro';
 import CardExperience from '@oh.studio/components/card-experience.astro';
+import Prefooter from '@oh.studio/components/prefooter.astro';
 
+//data
 import Experiences from '@oh.studio/data/experiences.data';
 import Clients from '@oh.studio/data/clients.data';
 
+
 const rootUrl = import.meta.env.OH_STUDIO;
 ---
+<link rel="preload" href="/oh.studio/oli_1.jpg" as="image">
+<link rel="preload" href="/oh.studio/oli_2.jpg" as="image" media="(max-width: 768px)">
+
+<script>
+  import reveal from '@oh.studio/helpers/useSetActive';
+  window.addEventListener('scroll', reveal);
+</script>
 
 <OhStudio title='profile'>
   <section class="hero">
@@ -27,15 +39,19 @@ const rootUrl = import.meta.env.OH_STUDIO;
     >
   </section>
 
-  <section class="about">
-    <Tag text="About" />
-    <h2 class="about__description">A freelance designer based in the UK. I combine my experience in product and brand to solve problems, tell stories, and create compelling experiences.</h2>
+  <section id="about" class="reveal">
+    <div class="fade-up-title--animation">
+      <Tag text="About" />
+    </div>
+    <h2 class="about__description fade-up-subtitle--animation">A freelance designer based in the UK. I combine my experience in product and brand to solve problems, tell stories, and create compelling experiences.</h2>
   </section>
 
-  <section class="experience">
-    <Tag text="Experience" />
-    <h2 class="experience__description">Where I've worked</h2>
-    <div class="experience__grid">
+  <section id="experience" class="reveal">
+    <div class="fade-up-title--animation">
+      <Tag text="Experience" />
+    </div>
+    <h2 class="experience__description fade-up-subtitle--animation">Where I've worked</h2>
+    <div class="experience__grid fade-up-subtitle--animation">
       {
         Experiences.map(experience => 
           <CardExperience 
@@ -49,24 +65,21 @@ const rootUrl = import.meta.env.OH_STUDIO;
     </div>
   </section>
 
-  <section class="clients">
-    <Tag text="Clients" />
-    <h2 class="clients__description">Who I've worked with</h2>
-    <div class="clients__grid">
+  <section id="clients" class="reveal">
+    <div class="fade-up-title--animation">
+      <Tag text="Clients" />
+    </div>
+    <h2 class="clients__description fade-up-subtitle--animation">Who I've worked with</h2>
+    <div class="clients__grid fade-up-subtitle--animation">
       { Clients.map(client =>
         <img class="clients__client" src={ client.logo_url } alt={ client.description } />
       )}
     </div>
   </section>
   
-  <section class="prefooter">
-    <h2 class="prefooter__title">Let's work together.</h2>
-    <h2 class="prefooter__title">
-      <a class="prefooter__actionbtn" href={ `${ rootUrl }/contact` }>
-        Get in touch.
-      </a>
-    </h2>
-  </section>
+  <div class="prefooter">
+    <Prefooter />
+  </div>
 </OhStudio>
 
 <style>
@@ -76,8 +89,12 @@ const rootUrl = import.meta.env.OH_STUDIO;
     align-items: center;
     height: 80vh;
 
+    @media (max-width: 768px) {
+      height: 50vh;
+    }
+
     .hero__title {
-      animation-name: show-up;
+      animation-name: fade-up;
       animation-duration: 1s;
     }
   }
@@ -88,65 +105,57 @@ const rootUrl = import.meta.env.OH_STUDIO;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1rem;
 
+    @media (max-width: 768px){
+      grid-template-columns: 1fr;
+      :nth-child(2) { display: none; }
+    }
+
     .pictures__image {
       width: 100%;
       aspect-ratio: 1/.75;
       object-fit: cover;
       border-radius: 15px;
 
-      animation-name: show-up;
-      animation-duration: 1s;
-      animation-delay: .3s;
+      animation-name: fade-up;
+      animation-duration: .8s;
       animation-fill-mode: both;
+    }
+
+    .pictures__image:nth-child(1) {
+      animation-delay: .3s;
+    }
+
+    .pictures__image:nth-child(2) {
+      animation-delay: .6s;
     }
   }
 
-  .about {
-    margin-top: 2rem;
+  #about {
+    margin-block: 15rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    height: 90vh;
 
-    .tag {
-      animation-name: show-up;
-      animation-fill-mode: backwards;
-      animation-timeline: view();
-      animation-range: 20% 60%;
+    @media (max-width: 768px) {
+      margin-block: 8rem;
     }
 
     .about__description {
       margin-top: 1rem;
-      max-width: 600px;
-
-      animation-name: show-up;
-      animation-fill-mode: backwards;
-      animation-timeline: view();
-      animation-range: 25% 60%;
+      max-width: 700px;
     }
   }
 
-  .experience {
+  #experience {
     margin-top: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    >.tag {
-      animation-name: show-up;
-      animation-fill-mode: backwards;
-      animation-timeline: view();
-      animation-range: 30% 60%;
-    }
-
     .experience__description {
       margin-top: 1rem;
-      animation-name: show-up;
-      animation-fill-mode: backwards;
-      animation-timeline: view();
-      animation-range: 35% 60%;
     }
 
     .experience__grid {
@@ -155,76 +164,52 @@ const rootUrl = import.meta.env.OH_STUDIO;
       grid-template-columns: repeat(3, 1fr);
       row-gap: 5rem;
       align-items: center;
-      margin: 7rem 0;
-      animation-name: show-up;
-      animation-fill-mode: backwards;
-      animation-timeline: view();
-      animation-range: 10% 30%;
+      margin-top: 7rem;
+
+      @media (max-width: 768px) {
+        margin-top: 5rem;
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 3.5rem;
+      }
     }
   }
 
-  .clients {
-    margin-top: 2rem;
+  #clients {
+    margin-top: 9rem;
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    >.tag {
-      animation-name: show-up;
-      animation-fill-mode: backwards;
-      animation-timeline: view();
-      animation-range: 30% 60%;
-    }
-
     .clients__description {
       margin-top: 1rem;
-      animation-name: show-up;
-      animation-fill-mode: backwards;
-      animation-timeline: view();
-      animation-range: 35% 60%;
     }
 
     .clients__grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       width: 100%;
-      margin: 7rem 0;
-      animation-name: show-up;
-      animation-fill-mode: backwards;
-      animation-timeline: view();
-      animation-range: 10% 30%;
+      margin-top: 7rem;
+
+      @media (max-width: 768px){
+        margin-top: 5rem;
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 1rem;
+      }
 
       .clients__client {
         width: 100%;
         padding: 20px;
         filter: invert(1);
+
+        @media (max-width: 768px){
+          padding: 10px;
+        }
       }
     }
   }
 
   .prefooter {
-    margin-top: 2rem;
-    margin-bottom: 10rem;
-    text-align: center;
-
-    .prefooter__title {
-      font-size: 2.5rem;
-      font-weight: 400;
-
-      animation-name: show-up;
-      animation-fill-mode: both;
-      animation-timeline: view();
-      animation-range: 150px 250px;
-    }
-
-    .prefooter__actionbtn {
-      color: var(--oh-primary);
-      cursor: pointer;
-      transition: color .1s ease-in-out;
-
-      &:hover {
-        color: var(--oh-secondary);
-      }
-    }
+    padding-top: 1rem;
+    margin-bottom: 5rem;
   }
 </style>

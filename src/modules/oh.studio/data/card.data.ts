@@ -1,14 +1,15 @@
-interface Card {
+export interface Card {
   name: string;
-  image: string;
+  image?: string;
+  video?: string;
   description: string;
 }
 
-const Cards: Card[] = [
+export const Cards: Card[] = [
   {
-    name        : "Aire",
-    image       : "/oh.studio/aire.jpg", 
-    description : "This is an image for the main galery"
+    name: "Aire",
+    image: "/oh.studio/aire.jpg", 
+    description: "This is an image for the main galery"
   }, 
   {  
     name:"Correlated", 
@@ -26,6 +27,11 @@ const Cards: Card[] = [
     description:"This is an image for the main galery"
   }, 
   {  
+    name:"Propeller", 
+    video: "https://framerusercontent.com/modules/assets/XuzMZ3Z1QQHKltPqRjzGnsWs27M~Jq48dGctHPeHtnn90xE_Aem-3HQJB_aNVwfu2fao5Ok.mp4",
+    description:"This is a video for the main galery"
+  }, 
+  {  
     name:"Schuh", 
     image:"/oh.studio/schuh.jpg", 
     description:"This is an image for the main galery"
@@ -34,6 +40,11 @@ const Cards: Card[] = [
     name:"Paper street", 
     image:"/oh.studio/paperstreet.jpg", 
     description:"This is an image for the main galery"
+  }, 
+  {  
+    name:"OH.SUPPLY", 
+    video: "https://framerusercontent.com/modules/assets/SGjFvgcbK7s4yKh0xwuNjriMNII~5SCIlrVv6SNR5PFMjsMv3qAIi3sYsG2gjdlB0qM-tng.mp4",
+    description:"This is a video for the main galery"
   }, 
   {  
     name:"Monokel Eyewaer", 
@@ -45,6 +56,14 @@ const Cards: Card[] = [
     image:"/oh.studio/lawtrades.jpg", 
     description:"This is an image for the main galery"
   },
+  {  
+    name:"Baseworld", 
+    image:"/oh.studio/baseworld.jpg", 
+    description:"This is an image for the main galery"
+  },
+  {  
+    name:"NYCB", 
+    video: "https://framerusercontent.com/modules/assets/NieGBlxBdgpz9QCHV5Aj89rWjVg~DPEeC0jYyBwx9c865cOkUi-KzBM-3ukyhpgtPhvYo_U.mp4",
+    description:"This is a video for the main galery"
+  },
 ]
-
-export default Cards;

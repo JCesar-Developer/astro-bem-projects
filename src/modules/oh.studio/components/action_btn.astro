@@ -8,7 +8,7 @@ interface Props {
 }
 const { content, hasLogo, link } = Astro.props;
 ---
-<a class="actionbtn" href={ link }>
+<a class="actionbtn" href={ link } target="_blank">
   { hasLogo && <LogoA /> }
   <p class="actionbtn__content">{ content }</p>
 </a>

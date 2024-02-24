@@ -1,16 +1,18 @@
 ---
-import LogoA from '@oh.studio/icons/logo_form_a.astro';
+import LogoAnimated from '@/modules/oh.studio/icons/logo-animated.astro';
 ---
 
 <footer class="footer">
-  <p class="footer__rights">
-    <LogoA />
-    © Oli Harris 2023
-  </p>
+  <div class="footer__rights">
+    <LogoAnimated />
+    <p class="footer__rights_right">
+      © This design on this website belongs to Oli Harris 2023, and its reproduction is for academic reasons only.
+    </p>
+  </div>
   <div class="footer__nav">
-    <a class="footer__link" href="#">Twitter</a>
-    <a class="footer__link" href="#">LinkedIn</a>
-    <a class="footer__link" href="#">Mail</a>
+    <a class="footer__link" href="https://twitter.com/olvhrs" target="_blank">Twitter</a>
+    <a class="footer__link" href="https://www.linkedin.com/in/oliiharris/" target="_blank">LinkedIn</a>
+    <a class="footer__link" href="mailto:oli@oh.studio">Email</a>
   </div>
 </footer>
 
@@ -26,11 +28,29 @@ import LogoA from '@oh.studio/icons/logo_form_a.astro';
     font-size: 14px;
     font-weight: 400;
 
+    @media (max-width: 768px){
+      flex-direction: column;
+      gap: 20px;
+      margin-bottom: 60px;
+    }
+
     .footer__rights {
       display: flex;
       flex-direction: row;
       align-items: center;
       gap: 10px;
+
+      @media (max-width: 768px){
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+      }
+
+      .footer__rights_right {
+        max-width: 300px;
+        text-wrap: balance;
+      }
+
     }
 
     .footer__nav {

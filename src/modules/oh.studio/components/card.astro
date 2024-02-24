@@ -1,24 +1,49 @@
 ---
-const { cardName, cardImage, cardDescription } = Astro.props;
+import type { Card } from '@oh.studio/data/card.data';
+
+interface Props {
+  card: Card;
+}
+
+const { card } = Astro.props;
+const { name, image, video, description } = card;
 const rootUrl = import.meta.env.OH_STUDIO;
 ---
 
-<div class="card">
-  <a href={ `${ rootUrl }/profile` }>
-    <img
-    class="card__image" 
-    src={cardImage}
-    alt={cardDescription}>
+<figure>
+  <div class="card">
+    <a href={ `${ rootUrl }/profile` }>
 
-    <div class="card__curtain"></div>
+      { 
+        image 
+        ? <img
+            class="card__image" 
+            src={ image }
+            alt={ description }
+          >
+        : video && 
+          <video
+            class="card__image"
+            src={ video }
+            autoplay
+            loop
+            muted
+            playsinline>
+          </video>
+      }
 
-    <h3 class="card__name">{ cardName }</h3>
 
-    <svg class="card__icon" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24">
-      <path d="M12.006 2.007a9.927 9.927 0 0 0-7.071 2.922c-3.898 3.899-3.898 10.243 0 14.142 1.885 1.885 4.396 2.923 7.071 2.923s5.187-1.038 7.071-2.923c3.898-3.898 3.898-10.242 0-14.142a9.928 9.928 0 0 0-7.071-2.922zm5.657 15.649c-1.507 1.507-3.517 2.337-5.657 2.337s-4.15-.83-5.657-2.337c-3.118-3.119-3.118-8.194 0-11.313 1.507-1.507 3.516-2.336 5.657-2.336s4.15.829 5.657 2.336c3.118 3.119 3.118 8.194 0 11.313z"></path><path d="m11.467 11.125-3.214 3.214 1.414 1.414 3.214-3.214 2.125 2.124V9H9.343z"></path>
-    </svg>
-  </a>
-</div>
+      <div class="card__curtain"></div>
+
+      <h3 class="card__name">{ name }</h3>
+
+      <svg class="card__icon" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24">
+        <path d="M12.006 2.007a9.927 9.927 0 0 0-7.071 2.922c-3.898 3.899-3.898 10.243 0 14.142 1.885 1.885 4.396 2.923 7.071 2.923s5.187-1.038 7.071-2.923c3.898-3.898 3.898-10.242 0-14.142a9.928 9.928 0 0 0-7.071-2.922zm5.657 15.649c-1.507 1.507-3.517 2.337-5.657 2.337s-4.15-.83-5.657-2.337c-3.118-3.119-3.118-8.194 0-11.313 1.507-1.507 3.516-2.336 5.657-2.336s4.15.829 5.657 2.336c3.118 3.119 3.118 8.194 0 11.313z"></path><path d="m11.467 11.125-3.214 3.214 1.414 1.414 3.214-3.214 2.125 2.124V9H9.343z"></path>
+      </svg>
+    </a>
+  </div>
+  <figcaption class="card__title" >{ name }</figcaption>
+</figure>
 
 <style>
   .card {
@@ -51,7 +76,7 @@ const rootUrl = import.meta.env.OH_STUDIO;
       position: absolute;
       top: 1.5rem;
       left: 1.5rem;
-      font-size: 14px;
+      font-size: 18px;
       color: var(--oh-white);
       font-weight: 400;
       opacity: 0;
@@ -69,10 +94,10 @@ const rootUrl = import.meta.env.OH_STUDIO;
 
     &:hover {
       .card__image {
-        filter: blur(5px)
+        filter: blur(10px)
       }
       .card__curtain {
-        opacity: 0.5;
+        opacity: 0.3;
       }
       .card__name {
         opacity: 1;
@@ -82,5 +107,11 @@ const rootUrl = import.meta.env.OH_STUDIO;
         transform: translate(10px, -10px);
       }
     }
+  }
+
+  .card__title {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 400;
   }
 </style>
