@@ -50,13 +50,16 @@ import LogoAnimated from '@/modules/oh.studio/icons/logo-animated.astro';
         max-width: 300px;
         text-wrap: balance;
       }
-
     }
 
     .footer__nav {
       display: flex;
       flex-direction: row;
       gap: 15px;
+
+      @media (max-width: 768px){
+        gap: 25px;
+      }
     }
 
     .logo__a {

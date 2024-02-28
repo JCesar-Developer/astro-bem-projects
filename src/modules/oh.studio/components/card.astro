@@ -110,8 +110,13 @@ const rootUrl = import.meta.env.OH_STUDIO;
   }
 
   .card__title {
+    display: none;
     margin-top: 10px;
     font-size: 18px;
     font-weight: 400;
+
+    @media (max-width: 768px){
+      display: block;
+    }
   }
 </style>

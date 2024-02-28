@@ -1,5 +1,7 @@
 ---
 import AstroLogo from "../../public/astro-logo.astro";
+const OH_URL = import.meta.env.OH_STUDIO;
+const BAO_URL = import.meta.env.BAO_SOCIETY;
 ---
 
 
@@ -10,8 +12,8 @@ import AstroLogo from "../../public/astro-logo.astro";
     <h1 class="hero__title">ASTRO + BEM</h1>
   
     <div class="hero__links">
-      <a href="/oh.studio"><button class="hero__link">Project 1</button></a>
-      <a href="/page-2"><button class="hero__link">Project 2</button></a>
+      <a href={ OH_URL } target="_blank"><button class="hero__link">Project 1</button></a>
+      <a href={ BAO_URL } target="_blank"><button class="hero__link">Project 2</button></a>
       <a href="/page-3"><button class="hero__link">Project 3</button></a>
     </div>
   </section>

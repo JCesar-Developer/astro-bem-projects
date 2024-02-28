@@ -6,6 +6,8 @@
     "paths": {
       "@/*": ["./src/*"],
       "@oh.studio/*": ["./src/modules/oh.studio/*"],
+      "@bao/*": ["./src/modules/baosociety/*"],
+      "@components/*": ["./src/shared/components/*"],
     }
   }
 }

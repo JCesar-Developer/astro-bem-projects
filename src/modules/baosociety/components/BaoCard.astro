@@ -1,0 +1,106 @@
+---
+interface Props { 
+  image: string; 
+  isInverted?: boolean;
+}
+const { image, isInverted } = Astro.props;
+---
+<article class="bao-card">
+  <picture class="bao-card__image-container">
+    <!-- Image behind 768px -->
+    <source 
+      media="(max-width: 768px)" 
+      srcset={ image.replace('.jpg', '-sm.jpg') }
+    >
+    <img 
+      src={ image } 
+      alt="Bao card"
+      class:list={[ 
+        'bao-card__image',
+        { 'bao-card__image--inverted': isInverted },
+      ]}
+    >
+  </picture>
+</article>
+
+<style>
+.bao-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 5/6;
+  
+  /* Image-background */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/baosociety/images/baos/paper-bg.jpg');
+    background-repeat: no-repeat;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.6;
+    filter: brightness(50%);
+    transform-origin: bottom;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .bao-card__image-container {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    /* Image-shadow */
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      width: 15%;
+      height: 15%;
+      border-radius: 50%;
+      transform: rotateY(10deg) rotateX(80deg) translate(-50%, -50%);
+      background-color: black;
+      opacity: 0;
+      filter: blur(40px);
+      opacity: 0.1;
+      transition: all 0.5s ease-in-out;
+    }
+
+    .bao-card__image {
+      width: 140%;
+      filter: brightness(90%);
+      transition: all 0.3s ease-in-out;
+      position: relative;
+
+      @media (min-width: 769px) {
+        &.bao-card__image--inverted { transform: scaleX(-1); }
+      }
+    }
+  }
+
+  &:hover {
+    &::before {
+      transform: perspective(2000px) rotateY(10deg) rotateX(80deg) scale(1.05);
+    }
+
+    .bao-card__image-container {
+
+      &::before {
+        opacity: 1;
+      }
+
+      .bao-card__image {
+        width: 135%;
+        filter: brightness(100%);
+      }
+    }
+  }
+}
+</style>

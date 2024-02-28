@@ -17,16 +17,28 @@ const developer = import.meta.env.DEV;
     padding: 0 40px 8rem 40px;
     text-align: center;
 
+    @media (max-width: 768px) {
+      padding: 6rem 0px;
+    }
+
     .prefooter__title {
       font-size: 2.5rem;
       font-weight: 400;
       transition: opacity .8s ease-in-out;
+
+      @media (max-width: 768px) {
+        font-size: 2rem;
+      }
     }
 
     .prefooter__actionbtn {
       color: var(--oh-primary);
       cursor: pointer;
       transition: color .1s ease-in-out;
+
+      @meda (max-width: 768px) {
+        font-size: 1.25rem;
+      }
 
       &:hover {
         color: var(--oh-secondary);

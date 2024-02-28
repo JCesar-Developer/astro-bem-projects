@@ -1,0 +1,106 @@
+---
+import Header from  '@bao/components/Header.astro';
+
+interface Props { title: string; description: string; }
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="light">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={ description } />
+    <link rel="icon" href="/baosociety/favicon.ico" type="image/x-icon" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+
+    <!-- Preload fonts -->
+    <link rel="preload" href="/baosociety/fonts/cinderblock-75.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/baosociety/fonts/founders-grotesk-regular.woff2" as="font" type="font/woff2" crossorigin />
+	</head>
+
+	<body>
+    <Header />
+    <slot/>
+	</body>
+</html>
+
+<style is:global>
+  @font-face {
+    font-family: 'Cinderblock';
+    src: url('/baosociety/fonts/cinderblock-75.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'Founders';
+    src: url('/baosociety/fonts/founders-grotesk-regular.woff2') format('woff2');
+    font-weight: 400;
+  }
+
+  .b1 { border: 1px solid red; }
+  .b2 { border: 1px solid blue; }
+  .b3 { border: 1px solid green; }
+  .b4 { border: 1px solid yellow; }
+  .b5 { border: 1px solid purple; }
+
+  :root {
+    --bao-bg-color: #bbb;
+    --bao-text-color: #28282e;
+    --bao-blue-accent: #0a0abe;
+
+    --large-screen: 1440px;
+    --medium-screen: 768px;
+    --small-screen: 576px;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Founders', sans-serif;
+    color: var(--bao-text-color);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cinderblock', sans-serif;
+    text-transform: uppercase;
+    font-weight: 400;
+    line-height: .75;
+  }
+
+  p {
+    text-transform: uppercase;
+    font-size: 14px;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--bao-text-color);
+  }
+
+  ul li {
+    list-style-type: none;
+  }
+</style>
+
+<style>
+  body {
+    background-color: var(--bao-bg-color);
+    position: relative;
+    overflow-x: hidden;
+
+    section {
+      max-width: 1440px;
+      margin-inline: auto;
+      
+      @media (max-width: 1440px) {
+        width: 100%;
+        padding-inline: 60px;
+      }
+
+      @media (max-width: 768px) {
+        padding-inline: 30px;
+      }
+    }
+  }
+</style>

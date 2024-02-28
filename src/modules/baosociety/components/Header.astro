@@ -1,0 +1,124 @@
+---
+import HamburgerBtn from "@components/Hamburger-btn.astro";
+---
+
+<link rel="preload" href="/baosociety/images/logo.png" as="image">
+
+<header>
+  <!-- Logo -->
+  <img class="header__logo" width="50" height="50" src="/baosociety/images/logo.png" alt="Logo bao society">
+
+  <nav class="header__desktop-nav">
+    <ul class="nav__col col-1">
+      <li><a href="https://baosociety.com/" target="_blank">Oficial website</a></li>
+      <li><a href="https://www.instagram.com/thebaosociety/" target="_blank">Instagram</a></li>
+      <li><a href="https://twitter.com/BaoSociety" target="_blank">Twitter</a></li>
+    </ul>
+    <ul class="nav__col col-2">
+      <li><a href="https://jcesar-developer.com/" target="_blank">Dev - Portfolio</a></li>
+      <li><a href="https://www.linkedin.com/in/julio-c%C3%A9sar-developer/" target="_blank">Dev - LinkedIn</a></li>
+      <li><a href="https://github.com/JCesar-Developer" target="_blank">Dev - GitHub</a></li>
+    </ul>
+  </nav>
+
+  <nav class="header__mobile-nav">
+    <ul></ul>
+    <ul class="nav__col col-1">
+      <li><a href="https://baosociety.com/" target="_blank">Oficial website</a></li>
+      <li><a href="https://www.instagram.com/thebaosociety/" target="_blank">Instagram</a></li>
+      <li><a href="https://twitter.com/BaoSociety" target="_blank">Twitter</a></li>
+    </ul>
+    <ul class="nav__col col-2">
+      <li><a href="https://jcesar-developer.com/" target="_blank">Dev - Portfolio</a></li>
+      <li><a href="https://www.linkedin.com/in/julio-c%C3%A9sar-developer/" target="_blank">Dev - LinkedIn</a></li>
+      <li><a href="https://github.com/JCesar-Developer" target="_blank">Dev - GitHub</a></li>
+    </ul>
+  </nav>
+
+  <HamburgerBtn />
+</header>
+
+<style>
+@import url(../css/header.animation.css);
+
+header {
+  padding-top: 4rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 1440px;
+  margin-inline: auto;
+  z-index: 10;
+  
+  @media (max-width: 1440px) {
+    width: 100%;
+    padding-inline: 60px;
+  }
+
+  @media (max-width: 576px) {
+    padding-top: 2rem;
+    padding-inline: 30px;
+  }
+
+  .header__logo {
+    opacity: 0;
+    z-index: 10;
+  }
+
+  .header__desktop-nav {
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    font-size: 12px;
+
+    @media (max-width: 576px) {
+      display: none;
+    }
+
+    :nth-child(1) {
+      width: 40%;
+    }
+
+    .nav__col {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      
+      li {
+        width: max-content;
+        &:hover a { color: var(--bao-blue-accent); } 
+      }
+    }
+  }
+
+  .header__mobile-nav {
+    display: none;
+    @media (max-width: 576px) {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: var(--bao-blue-accent);
+    }
+  }
+
+  #hamburger-btn {
+    display: none;
+    @media (max-width: 576px) {
+      display: flex;
+      z-index: 10;
+    }
+  }
+}
+</style>

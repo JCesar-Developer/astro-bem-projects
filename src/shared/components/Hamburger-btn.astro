@@ -1,0 +1,49 @@
+<script>
+const phoneMenu = document.getElementById('phone-menu');
+document.getElementById('hamburger-btn')!.addEventListener('click', function() {
+  this.classList.toggle('active');
+  phoneMenu?.classList.toggle('active');
+});
+</script>
+
+<button id="hamburger-btn">
+  <span id="top" class="hamburger-line"></span>
+  <span id="middle" class="hamburger-line"></span>
+  <span id="bottom" class="hamburger-line"></span>
+</button>
+
+<style>
+button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+#hamburger-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  gap: 5.5px;
+  padding-block: 2px;
+}
+.hamburger-line {
+  width: 24px;
+  height: 3px;
+  border-radius: 5px;
+  background-color: #000;
+  transition: transform 0.5s, opacity 0.5s;
+}
+#hamburger-btn.active #top {
+  transform: rotate(45deg) translate(5px, 6.5px);
+}
+#hamburger-btn.active #middle {
+  opacity: 0;
+}
+#hamburger-btn.active #bottom {
+  transform: rotate(-45deg) translate(5px, -6.5px);
+}
+</style>
